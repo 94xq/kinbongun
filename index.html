@@ -5,84 +5,413 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Memecoin Site</title>
   <style>
-    body,html{
-      margin:0; padding:0; height:100%; width:100%; overflow:hidden;
-      font-family:Arial, sans-serif;
+    body, html {
+      margin: 0; 
+      padding: 0; 
+      height: 100%; 
+      width: 100%; 
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
     }
 
     /* Loading Screen */
-    #loader{
-      position:fixed;
-      top:0; left:0; width:100%; height:100%;
-      background:black;
-      display:flex; justify-content:center; align-items:center;
-      color:white; font-size:24px;
-      transition:opacity 0.5s ease;
+    #loader {
+      position: fixed;
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background: linear-gradient(45deg, #000000, #1a0000, #330000);
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      color: white; 
+      font-size: 28px;
+      transition: opacity 0.8s ease;
+      cursor: pointer;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    /* Pulsing effect for loader text */
+    #loader::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, transparent 20%, rgba(163, 0, 0, 0.1) 70%);
+      animation: pulse 3s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.3; }
+      100% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    #loader-text {
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 10px rgba(255, 50, 50, 0.8);
+      animation: textGlow 2s infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 10px rgba(255, 50, 50, 0.8); }
+      100% { text-shadow: 0 0 20px rgba(255, 100, 100, 1), 0 0 30px rgba(255, 50, 50, 0.9); }
     }
 
     /* Main Content */
-    #main{
-      display:none;
-      height:100%; width:100%;
-      background:#f2f2f2;
-      text-align:center;
-      padding-top:40px;
+    #main {
+      display: none;
+      height: 100%; 
+      width: 100%;
+      position: relative;
+      overflow: hidden;
     }
 
-    img{
-      width:300px;
+    /* Fullscreen image with parallax effect */
+    #mainImage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.3s ease;
     }
 
-    .link-box{
-      margin-top:20px;
-      font-size:28px;
-      font-weight:bold;
-      cursor:pointer;
-      color:#a30000;
+    /* Particle effect overlay */
+    #particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Content container */
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+      padding: 40px 20px;
+      z-index: 3;
+      text-align: center;
+    }
+
+    /* Coin title */
+    .coin-title {
+      font-size: 48px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(163, 0, 0, 0.8);
+      letter-spacing: 2px;
+    }
+
+    /* Coin tagline */
+    .coin-tagline {
+      font-size: 18px;
+      color: #ffcccc;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Links container */
+    .links-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Link boxes */
+    .link-box {
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      background: rgba(163, 0, 0, 0.7);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      min-width: 150px;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .link-box:hover {
+      background: rgba(200, 0, 0, 0.9);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 50, 50, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Memecoin logo */
+    .logo {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 15px rgba(163, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 30px;
+      border-radius: 50px;
+      border: 2px solid rgba(163, 0, 0, 0.7);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .coin-title {
+        font-size: 36px;
+      }
+      
+      .link-box {
+        min-width: 120px;
+        padding: 12px 20px;
+        font-size: 18px;
+      }
+      
+      .links-container {
+        gap: 15px;
+      }
+      
+      .logo {
+        font-size: 28px;
+        padding: 8px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .coin-title {
+        font-size: 28px;
+      }
+      
+      .link-box {
+        min-width: 100%;
+        padding: 10px 15px;
+      }
+      
+      .links-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .logo {
+        font-size: 24px;
+        padding: 6px 15px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Loading screen -->
-  <div id="loader">click to enter...</div>
+  <div id="loader">
+    <div id="loader-text">CLICK TO ENTER MEMECOIN UNIVERSE</div>
+  </div>
 
   <!-- Main content -->
   <div id="main">
-    <img id="mainImage" src="assets/kim/YOUR_IMAGE_FILE.png" alt="icon" />
-
-    <div class="link-box" id="link1">Chart</div>
-    <div class="link-box" id="link2">CA</div>
-    <div class="https://t.me/+c1c8QsO26v8yMzc0" id="link3">Telegram</div>
-    <div class="https://x.com/JonKulli49540" id="link4">X/Twitter</div>
+    <!-- Particle effect container -->
+    <div id="particles"></div>
+    
+    <!-- Fullscreen image -->
+    <img id="mainImage" src="https://images.unsplash.com/photo-1620336655055-bd87c5d1d73f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Memecoin Background" />
+    
+    <!-- Memecoin logo -->
+    <div class="logo">$MEMECOIN</div>
+    
+    <!-- Content container -->
+    <div class="content">
+      <div class="coin-title">MOONSHOT MEMECOIN</div>
+      <div class="coin-tagline">The next-generation meme token that's set to revolutionize the crypto space. Join the revolution before it's too late!</div>
+      
+      <div class="links-container">
+        <div class="link-box" id="link1">📈 Chart</div>
+        <div class="link-box" id="link2">🔗 CA</div>
+        <div class="link-box" id="link3">✈️ Telegram</div>
+        <div class="link-box" id="link4">🐦 X/Twitter</div>
+      </div>
+    </div>
   </div>
 
-  <audio id="enterSound" src="assets/sound/YOUR_SOUND_FILE.mp3"></audio>
+  <audio id="enterSound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-show-intro-music-687.mp3"></audio>
 
   <script>
     const loader = document.getElementById("loader");
     const main = document.getElementById("main");
     const enterSound = document.getElementById("enterSound");
+    const mainImage = document.getElementById("mainImage");
+    const particlesContainer = document.getElementById("particles");
 
+    // Links configuration
     let links = {
-      link1: "", // add link or leave empty
-      link2: "",
-      link3: "",
-      link4: ""
+      link1: "https://dexscreener.com/", // add your chart link
+      link2: "https://etherscan.io/", // add contract address link
+      link3: "https://telegram.org/", // add Telegram link
+      link4: "https://twitter.com/" // add Twitter/X link
     };
 
-    loader.addEventListener("click", ()=>{
-      enterSound.play().catch(()=>{});
+    // Create floating particles effect
+    function createParticles() {
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        
+        // Random position
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        
+        // Random size
+        const size = Math.random() * 10 + 5;
+        
+        // Random animation duration
+        const duration = Math.random() * 20 + 10;
+        
+        // Set particle styles
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.background = `rgba(${Math.random() * 100 + 155}, ${Math.random() * 50}, ${Math.random() * 50}, ${Math.random() * 0.5 + 0.3})`;
+        
+        // Add animation
+        particle.style.animation = `float ${duration}s infinite ease-in-out`;
+        
+        // Add to container
+        particlesContainer.appendChild(particle);
+        
+        // Create keyframes for floating animation
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `
+          @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(90deg); }
+            50% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(180deg); }
+            75% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(270deg); }
+          }
+        `;
+        document.head.appendChild(styleSheet);
+      }
+    }
+
+    // Parallax effect on mouse move
+    function handleMouseMove(e) {
+      const x = (e.clientX / window.innerWidth) * 20 - 10;
+      const y = (e.clientY / window.innerHeight) * 20 - 10;
+      
+      mainImage.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+    }
+
+    // Enter site on loader click
+    loader.addEventListener("click", () => {
+      // Play sound
+      enterSound.play().catch(() => {
+        // Fallback in case audio fails
+        console.log("Audio play failed, continuing without sound");
+      });
+      
+      // Animate loader out
       loader.style.opacity = 0;
-      setTimeout(()=>{
+      
+      // Create particle effect explosion
+      createExplosionEffect();
+      
+      setTimeout(() => {
         loader.style.display = "none";
         main.style.display = "block";
-      }, 500);
+        
+        // Create background particles
+        createParticles();
+        
+        // Add mouse move listener for parallax
+        document.addEventListener("mousemove", handleMouseMove);
+      }, 800);
     });
 
+    // Create explosion effect on click
+    function createExplosionEffect() {
+      const explosionParticles = 30;
+      
+      for (let i = 0; i < explosionParticles; i++) {
+        const particle = document.createElement("div");
+        particle.style.position = "absolute";
+        particle.style.width = "15px";
+        particle.style.height = "15px";
+        particle.style.borderRadius = "50%";
+        particle.style.background = `rgba(${Math.random() * 100 + 155}, ${Math.random() * 50}, ${Math.random() * 50}, 1)`;
+        particle.style.left = "50%";
+        particle.style.top = "50%";
+        particle.style.transform = "translate(-50%, -50%)";
+        particle.style.zIndex = "101";
+        particle.style.boxShadow = "0 0 10px rgba(255, 100, 100, 0.8)";
+        
+        document.body.appendChild(particle);
+        
+        // Random direction
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 150 + 100;
+        const duration = Math.random() * 0.5 + 0.5;
+        
+        // Animate explosion
+        particle.animate([
+          { transform: "translate(-50%, -50%) scale(1)", opacity: 1 },
+          { transform: `translate(${Math.cos(angle) * distance - 50}%, ${Math.sin(angle) * distance - 50}%) scale(0)`, opacity: 0 }
+        ], {
+          duration: duration * 1000,
+          easing: "cubic-bezier(0.1, 0.8, 0.9, 0.1)"
+        });
+        
+        // Remove particle after animation
+        setTimeout(() => {
+          particle.remove();
+        }, duration * 1000);
+      }
+    }
+
+    // Set up link click handlers
     for(let id in links){
-      document.getElementById(id).addEventListener("click", ()=>{
-        if(links[id]) window.open(links[id], "_blank");
-      });
+      const element = document.getElementById(id);
+      if(element) {
+        element.addEventListener("click", () => {
+          if(links[id]) {
+            // Add a click effect
+            element.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              element.style.transform = "";
+            }, 200);
+            
+            window.open(links[id], "_blank");
+          }
+        });
+      }
     }
   </script>
 </body>
