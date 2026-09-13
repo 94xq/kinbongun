@@ -3,100 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050505">
   <title>KIM — The Collection</title>
-  <meta name="description" content="KIMBONGUN.SPACE — clothing, accessories, fragrances and bundles.">
+  <meta name="description" content="KIMBONGUN.SPACE — curated clothing, accessories, fragrances and bundles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=glass-2">
 </head>
 <body>
-  <div class="top-strip">KIMBONGUN.SPACE</div>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="announcement"><span class="dot"></span> KIMBONGUN.SPACE <span class="sep">/</span> NEW COLLECTION LIVE</div>
 
   <header class="site-header">
-    <div class="header-inner">
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a class="active" href="#catalog">Catalog</a>
-        <a href="#contact">Contact</a>
+    <div class="nav-shell glass">
+      <nav class="nav-left" aria-label="Primary navigation">
+        <a href="#home">Home</a><a class="active" href="#catalog">Catalog</a><a href="#contact">Contact</a>
       </nav>
-
       <a class="logo" href="#home" aria-label="KIM home">
-        <svg class="palm" viewBox="0 0 52 60" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
-          <path stroke-width="4" d="M28 57c5-18 5-34 1-48M29 11C19 2 9 3 3 7c10 0 18 4 24 11M30 11C34 3 43 1 50 2c-8 4-14 10-18 17M30 12c8-5 16-4 21 1-7-1-13 1-19 5M28 11C20 3 13 1 6 2c8 3 14 8 20 16"/>
-        </svg>
+        <svg viewBox="0 0 52 60" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path stroke-width="4" d="M28 57c5-18 5-34 1-48M29 11C19 2 9 3 3 7c10 0 18 4 24 11M30 11C34 3 43 1 50 2c-8 4-14 10-18 17M30 12c8-5 16-4 21 1-7-1-13 1-19 5M28 11C20 3 13 1 6 2c8 3 14 8 20 16"/></svg>
         <span>KIM</span>
       </a>
-
-      <div class="header-actions">
-        <button class="icon-button" id="headerSearch" aria-label="Focus search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-        </button>
-        <button class="bag-button" id="bagToggle" aria-label="Open bag">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg>
-          <span>Bag</span><span class="bag-count" id="bagCount">0</span>
-        </button>
+      <div class="nav-actions">
+        <button class="circle-btn" id="headerSearch" aria-label="Focus product search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg></button>
+        <button class="bag-btn" id="bagToggle"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8Z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg><span>Bag</span><b id="bagCount">0</b></button>
       </div>
     </div>
   </header>
 
   <main id="home">
-    <section class="collection" id="catalog">
-      <div class="collection-head">
-        <p class="eyebrow">THE COLLECTION</p>
-        <h1>The collection.</h1>
-        <p class="intro">Clothing, accessories, fragrances and more.</p>
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <span class="micro-pill glass"><i></i> CURATED DROP / 01</span>
+        <h1>Wear better.<br><span>Keep it simple.</span></h1>
+        <p>Curated clothing, accessories and fragrances in one clean collection. No clutter — just the pieces worth seeing.</p>
+        <div class="hero-actions"><a class="primary" href="#catalog">Shop the collection <span>↗</span></a><a class="secondary glass" href="#featured">Explore highlights</a></div>
+        <div class="trust-row"><span><b>18</b> selected products</span><span><b>€</b> EUR pricing</span><span><b>Stripe</b> secure checkout</span></div>
       </div>
-
-      <div class="category-pills" id="categories" aria-label="Product categories">
-        <button class="pill active" data-category="ALL">All products</button>
-        <button class="pill" data-category="BUNDLES">Bundles</button>
-        <button class="pill" data-category="CLOTHING">Clothing</button>
-        <button class="pill" data-category="ACCESSORIES">Accessories</button>
-        <button class="pill" data-category="FRAGRANCES">Fragrances</button>
+      <div class="hero-stage" id="featured">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <article class="float-card glass card-a"><span>01 / BUNDLE</span><img src="assets/starter-bundle.png" alt="Starter bundle"><strong>Starter Bundle</strong></article>
+        <article class="float-card glass card-b"><span>02 / CLOTHING</span><img src="assets/black-puffer.jpg" alt="Black puffer jacket"><strong>Black Puffer</strong></article>
+        <article class="float-card glass card-c"><span>03 / ACCESSORY</span><img src="assets/black-patterned-belt.png" alt="Black patterned belt"><strong>Patterned Belt</strong></article>
       </div>
-
-      <div class="catalog-tools">
-        <div class="search-box">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-          <input id="searchInput" type="search" placeholder="Search the collection…" autocomplete="off">
-        </div>
-        <select id="sortSelect" aria-label="Sort products">
-          <option value="featured">Featured</option>
-          <option value="price-asc">Price: low to high</option>
-          <option value="price-desc">Price: high to low</option>
-          <option value="az">A–Z</option>
-        </select>
-      </div>
-
-      <div class="product-count" id="productCount">18 products</div>
-      <div class="product-grid" id="productGrid"></div>
-      <div class="empty-state" id="emptyState" hidden>No products match your search.</div>
     </section>
 
-    <section class="contact" id="contact">
-      <p class="eyebrow">KIMBONGUN.SPACE</p>
-      <h2>Need a hand?</h2>
-      <p>Questions about an order, sizing or delivery? Contact us and include your order email.</p>
-      <a href="mailto:contact@kimbongun.space">contact@kimbongun.space</a>
+    <section class="catalog section-shell" id="catalog">
+      <div class="catalog-head">
+        <div><p class="eyebrow">THE COLLECTION</p><h2>Shop the drop.</h2><p class="sub">Everything organized by category, with direct secure checkout.</p></div>
+        <div class="count-badge glass"><span id="productCount">18</span><small>PRODUCTS</small></div>
+      </div>
+
+      <div class="filter-panel glass">
+        <div class="pills" id="categories">
+          <button class="pill active" data-category="ALL">All products</button><button class="pill" data-category="BUNDLES">Bundles</button><button class="pill" data-category="CLOTHING">Clothing</button><button class="pill" data-category="ACCESSORIES">Accessories</button><button class="pill" data-category="FRAGRANCES">Fragrances</button>
+        </div>
+        <div class="tools">
+          <label class="search-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input id="searchInput" type="search" placeholder="Search the collection…" autocomplete="off"></label>
+          <select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="az">A–Z</option></select>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state glass" id="emptyState" hidden>No products match your search.</div>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+      <div class="contact-card glass"><div><p class="eyebrow">NEED A HAND?</p><h2>Questions before ordering?</h2><p>For sizing, delivery or order questions, contact KIM and include the email used at checkout.</p></div><a class="primary" href="mailto:contact@kimbongun.space">contact@kimbongun.space <span>↗</span></a></div>
     </section>
   </main>
 
-  <footer>
-    <span>© 2026 KIM</span>
-    <span>KIMBONGUN.SPACE</span>
-  </footer>
+  <footer class="section-shell"><div class="footer-line"></div><div class="footer-content"><div class="footer-logo">KIM</div><span>© 2026 KIMBONGUN.SPACE</span><span>Clothing · Accessories · Fragrances</span></div></footer>
 
   <div class="scrim" id="scrim" hidden></div>
-  <aside class="bag-drawer" id="bagDrawer" aria-hidden="true">
-    <div class="drawer-head">
-      <div><p class="eyebrow">YOUR BAG</p><h2>Selected items</h2></div>
-      <button id="bagClose" class="close-button" aria-label="Close bag">×</button>
-    </div>
+  <aside class="bag-drawer glass" id="bagDrawer" aria-hidden="true">
+    <div class="drawer-head"><div><p class="eyebrow">YOUR BAG</p><h2>Selected items</h2></div><button id="bagClose" class="close-btn" aria-label="Close bag">×</button></div>
     <div class="bag-items" id="bagItems"></div>
-    <div class="drawer-note">Each item uses its own secure Stripe checkout link.</div>
+    <div class="drawer-note">Checkout opens securely on Stripe. Clothing checkout includes size selection.</div>
   </aside>
-
-  <script src="app.js"></script>
+  <script src="app.js?v=glass-2"></script>
 </body>
 </html>

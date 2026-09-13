@@ -1,4 +1,2 @@
-# KIMBONGUN storefront
-Dark KIM catalog layout for GitHub Pages. The repository root should contain `index.html`, `style.css`, `app.js`, `CNAME`, `.nojekyll`, `404.html`, and the `assets/` folder.
-
-Custom domain: kimbongun.space
+# KIMBONGUN.SPACE
+Dark liquid-glass storefront for GitHub Pages. Custom domain: kimbongun.space. Stripe Payment Links are configured in app.js.
