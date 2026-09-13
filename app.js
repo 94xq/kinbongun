@@ -33,11 +33,14 @@ let query = '';
 let sort = 'featured';
 let bag = JSON.parse(localStorage.getItem('kim-bag-v2') || '[]');
 
+const ASSET_VERSION = '20260913-photo-fix-1';
+const imageUrl = path => `${path}?v=${ASSET_VERSION}`;
+
 const eur = n => new Intl.NumberFormat('en-FI',{style:'currency',currency:'EUR'}).format(n);
 
 function productCard(p){
   return `<article class="product-card">
-    <div class="image-wrap"><img src="${p.image}" alt="${p.title}" loading="lazy"></div>
+    <div class="image-wrap"><img src="${imageUrl(p.image)}" alt="${p.title}" loading="lazy"></div>
     <div class="product-info">
       <p class="category">${p.category}</p>
       <h3 class="product-title">${p.title}</h3>
@@ -91,7 +94,7 @@ function renderBag(){
   bagItems.innerHTML = bag.map(id => {
     const p = products.find(x => x.id === id);
     return `<div class="bag-item">
-      <img src="${p.image}" alt="${p.title}">
+      <img src="${imageUrl(p.image)}" alt="${p.title}">
       <div><h3>${p.title}</h3><p>${eur(p.price)}</p></div>
       <div class="bag-item-actions">
         <button class="mini-buy" data-buy="${p.id}">Checkout</button>
