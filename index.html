@@ -1,102 +1,102 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>KIM — Clothing & Footwear</title>
-  <meta name="description" content="KIMBONGUN.SPACE — clothing, accessories, fragrances and bundles." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KIM — The Collection</title>
+  <meta name="description" content="KIMBONGUN.SPACE — clothing, accessories, fragrances and bundles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="checkout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="top-strip">KIMBONGUN.SPACE</div>
+
   <header class="site-header">
-    <a class="wordmark" href="#home" aria-label="KIM home">
-      <span class="brand-top">KIMBONGUN.SPACE</span>
-      <span class="brand-main">KIM</span>
-    </a>
-    <nav class="main-nav" aria-label="Primary navigation">
-      <a href="#home">Home</a>
-      <a href="#catalog">Catalog</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <button class="icon-btn" id="searchToggle" aria-label="Search products">⌕</button>
-      <button class="bag-btn" id="bagToggle" aria-label="Open shopping bag">Bag <span id="bagCount">0</span></button>
+    <div class="header-inner">
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a class="active" href="#catalog">Catalog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="logo" href="#home" aria-label="KIM home">
+        <svg class="palm" viewBox="0 0 52 60" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
+          <path stroke-width="4" d="M28 57c5-18 5-34 1-48M29 11C19 2 9 3 3 7c10 0 18 4 24 11M30 11C34 3 43 1 50 2c-8 4-14 10-18 17M30 12c8-5 16-4 21 1-7-1-13 1-19 5M28 11C20 3 13 1 6 2c8 3 14 8 20 16"/>
+        </svg>
+        <span>KIM</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="icon-button" id="headerSearch" aria-label="Focus search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+        </button>
+        <button class="bag-button" id="bagToggle" aria-label="Open bag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg>
+          <span>Bag</span><span class="bag-count" id="bagCount">0</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <div class="search-panel" id="searchPanel" hidden>
-    <label for="searchInput">Search products</label>
-    <div class="search-row">
-      <input id="searchInput" type="search" placeholder="Search KIM" autocomplete="off" />
-      <button id="searchClose" class="text-btn">Close</button>
-    </div>
-  </div>
-
   <main id="home">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">KIMBONGUN.SPACE</p>
-        <h1>THE KIM COLLECTION</h1>
-        <p class="hero-sub">CLOTHING · ACCESSORIES · FRAGRANCES</p>
-        <a class="primary-btn" href="#catalog">Shop all</a>
+    <section class="collection" id="catalog">
+      <div class="collection-head">
+        <p class="eyebrow">THE COLLECTION</p>
+        <h1>The collection.</h1>
+        <p class="intro">Clothing, accessories, fragrances and more.</p>
       </div>
-      <div class="hero-visual" role="img" aria-label="KIM collection campaign">
-        <img src="assets/hero.jpg" alt="KIM campaign" />
+
+      <div class="category-pills" id="categories" aria-label="Product categories">
+        <button class="pill active" data-category="ALL">All products</button>
+        <button class="pill" data-category="BUNDLES">Bundles</button>
+        <button class="pill" data-category="CLOTHING">Clothing</button>
+        <button class="pill" data-category="ACCESSORIES">Accessories</button>
+        <button class="pill" data-category="FRAGRANCES">Fragrances</button>
       </div>
+
+      <div class="catalog-tools">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+          <input id="searchInput" type="search" placeholder="Search the collection…" autocomplete="off">
+        </div>
+        <select id="sortSelect" aria-label="Sort products">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="az">A–Z</option>
+        </select>
+      </div>
+
+      <div class="product-count" id="productCount">18 products</div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>No products match your search.</div>
     </section>
 
-    <section class="catalog-section" id="catalog">
-      <div class="section-heading">
-        <div><p class="eyebrow">Collections</p><h2>Bundles</h2></div>
-        <button class="text-btn filter-link" data-filter="BUNDLES">View all</button>
-      </div>
-      <div class="product-grid" id="bundleGrid"></div>
-    </section>
-
-    <section class="catalog-section">
-      <div class="section-heading">
-        <div><p class="eyebrow">Curated</p><h2>Featured products</h2></div>
-        <button class="text-btn filter-link" data-filter="ALL">View all</button>
-      </div>
-      <div class="product-grid" id="featuredGrid"></div>
-    </section>
-
-    <section class="editorial-grid">
-      <article class="editorial-card dark">
-        <div><p class="eyebrow">THE KIM EDIT</p><h3>Everyday favourites.</h3><button class="editorial-link filter-link" data-filter="CLOTHING">Explore clothing ↗</button></div>
-        <img src="assets/navy-knit-sweater.png" alt="KIM campaign in navy knitwear" />
-      </article>
-      <article class="editorial-card light">
-        <div><p class="eyebrow">THE BUNDLE EDIT</p><h3>Find your starting point.</h3><button class="editorial-link filter-link" data-filter="BUNDLES">Explore bundles ↗</button></div>
-        <img src="assets/starter-bundle.png" alt="KIM bundle collection" />
-      </article>
-    </section>
-
-    <section class="contact-section" id="contact">
-      <p class="eyebrow">Need a hand?</p>
-      <h2>Contact KIM</h2>
-      <p>For product, delivery or return questions, contact KIM through your usual store contact channel.</p>
+    <section class="contact" id="contact">
+      <p class="eyebrow">KIMBONGUN.SPACE</p>
+      <h2>Need a hand?</h2>
+      <p>Questions about an order, sizing or delivery? Contact us and include your order email.</p>
+      <a href="mailto:contact@kimbongun.space">contact@kimbongun.space</a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-brand"><div class="brand-main">KIM</div><p>The KIM collection.<br>kimbongun.space</p></div>
-    <div><h4>Explore</h4><button class="footer-link filter-link" data-filter="ALL">All products</button><button class="footer-link filter-link" data-filter="BUNDLES">Bundles</button><button class="footer-link filter-link" data-filter="CLOTHING">Clothing</button><button class="footer-link filter-link" data-filter="ACCESSORIES">Accessories</button><button class="footer-link filter-link" data-filter="FRAGRANCES">Fragrances</button></div>
-    <div><h4>Need a hand?</h4><a href="#contact">Contact</a><a href="#">Delivery</a><a href="#">Returns & refunds</a></div>
-    <div><h4>The fine print</h4><a href="#">Privacy</a><a href="#">Terms</a><span>EUR €</span></div>
-    <div class="footer-note"><p>Secure checkout powered by Stripe.</p><p>© 2026 KIM. All rights reserved.</p><p>Independent branding. No celebrity or brand endorsement.</p></div>
+  <footer>
+    <span>© 2026 KIM</span>
+    <span>KIMBONGUN.SPACE</span>
   </footer>
 
-  <aside class="drawer" id="bagDrawer" aria-hidden="true">
-    <div class="drawer-head"><h2>Your bag</h2><button class="icon-btn" id="bagClose" aria-label="Close bag">×</button></div>
-    <div id="bagItems" class="bag-items"></div>
-    <div class="drawer-foot"><p>Secure checkout is handled by Stripe. Items in the bag are checked out separately.</p></div>
-  </aside>
   <div class="scrim" id="scrim" hidden></div>
+  <aside class="bag-drawer" id="bagDrawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div><p class="eyebrow">YOUR BAG</p><h2>Selected items</h2></div>
+      <button id="bagClose" class="close-button" aria-label="Close bag">×</button>
+    </div>
+    <div class="bag-items" id="bagItems"></div>
+    <div class="drawer-note">Each item uses its own secure Stripe checkout link.</div>
+  </aside>
+
   <script src="app.js"></script>
 </body>
 </html>
