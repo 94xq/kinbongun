@@ -9,16 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=glass-2">
+  <link rel="stylesheet" href="style.css?v=20260913-v5">
 </head>
-<body>
+<body data-nav="home" class="page-enter">
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
   <div class="announcement"><span class="dot"></span> KIMBONGUN.SPACE <span class="sep">/</span> NEW COLLECTION LIVE</div>
 
   <header class="site-header">
     <div class="nav-shell glass">
       <nav class="nav-left" aria-label="Primary navigation">
-        <a href="#home">Home</a><a class="active" href="#catalog">Catalog</a><a href="#contact">Contact</a>
+        <a data-nav="home" href="#home">Home</a><a data-nav="catalog" href="#catalog">Catalog</a><a data-nav="contact" href="#contact">Contact</a><span class="nav-indicator" aria-hidden="true"></span>
       </nav>
       <a class="logo" href="#home" aria-label="KIM home">
         <svg viewBox="0 0 52 60" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path stroke-width="4" d="M28 57c5-18 5-34 1-48M29 11C19 2 9 3 3 7c10 0 18 4 24 11M30 11C34 3 43 1 50 2c-8 4-14 10-18 17M30 12c8-5 16-4 21 1-7-1-13 1-19 5M28 11C20 3 13 1 6 2c8 3 14 8 20 16"/></svg>
@@ -32,13 +32,13 @@
   </header>
 
   <main id="home">
-    <section class="hero section-shell">
+    <section class="hero section-shell reveal">
       <div class="hero-copy">
         <span class="micro-pill glass"><i></i> CURATED DROP / 01</span>
         <h1>Wear better.<br><span>Keep it simple.</span></h1>
         <p>Curated clothing, accessories and fragrances in one clean collection. No clutter — just the pieces worth seeing.</p>
         <div class="hero-actions"><a class="primary" href="#catalog">Shop the collection <span>↗</span></a><a class="secondary glass" href="#featured">Explore highlights</a></div>
-        <div class="trust-row"><span><b>18</b> selected products</span><span><b>€</b> EUR pricing</span><span><b>Stripe</b> secure checkout</span></div>
+        <div class="trust-row"><span><b id="heroProductCount">48</b> selected products</span><span><b>€</b> EUR pricing</span><span><b>Stripe</b> secure checkout</span></div>
       </div>
       <div class="hero-stage" id="featured">
         <div class="orb orb-one"></div><div class="orb orb-two"></div>
@@ -48,15 +48,15 @@
       </div>
     </section>
 
-    <section class="catalog section-shell" id="catalog">
+    <section class="catalog section-shell reveal" id="catalog">
       <div class="catalog-head">
         <div><p class="eyebrow">THE COLLECTION</p><h2>Shop the drop.</h2><p class="sub">Everything organized by category, with direct secure checkout.</p></div>
-        <div class="count-badge glass"><span id="productCount">18</span><small>PRODUCTS</small></div>
+        <div class="count-badge glass"><span id="productCount">48</span><small>PRODUCTS</small></div>
       </div>
 
       <div class="filter-panel glass">
         <div class="pills" id="categories">
-          <button class="pill active" data-category="ALL">All products</button><button class="pill" data-category="BUNDLES">Bundles</button><button class="pill" data-category="CLOTHING">Clothing</button><button class="pill" data-category="ACCESSORIES">Accessories</button><button class="pill" data-category="FRAGRANCES">Fragrances</button>
+          <button class="pill active" data-category="ALL">All products</button><button class="pill" data-category="BUNDLES">Bundles</button><button class="pill" data-category="CLOTHING">Clothing</button><button class="pill" data-category="ACCESSORIES">Accessories</button><button class="pill" data-category="FRAGRANCES">Fragrances</button><button class="pill" data-category="FOOTWEAR">Footwear</button>
         </div>
         <div class="tools">
           <label class="search-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input id="searchInput" type="search" placeholder="Search the collection…" autocomplete="off"></label>
@@ -68,7 +68,7 @@
       <div class="empty-state glass" id="emptyState" hidden>No products match your search.</div>
     </section>
 
-    <section class="contact section-shell" id="contact">
+    <section class="contact section-shell reveal" id="contact">
       <div class="contact-card glass"><div><p class="eyebrow">NEED A HAND?</p><h2>Questions before ordering?</h2><p>For sizing, delivery or order questions, contact KIM and include the email used at checkout.</p></div><a class="primary" href="mailto:contact@kimbongun.space">contact@kimbongun.space <span>↗</span></a></div>
     </section>
   </main>
@@ -81,6 +81,6 @@
     <div class="bag-items" id="bagItems"></div>
     <div class="drawer-note">Checkout opens securely on Stripe. Clothing checkout includes size selection.</div>
   </aside>
-  <script src="app.js?v=glass-2"></script>
+  <script src="products.js?v=20260913-v5"></script><script src="ui.js?v=20260913-v5"></script><script src="app.js?v=20260913-v5"></script>
 </body>
 </html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>Product — KIM</title>
+  <meta name="description" content="KIM product details">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20260913-v5">
+</head>
+<body class="product-page page-enter" data-nav="catalog">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="announcement"><span class="dot"></span> KIMBONGUN.SPACE <span class="sep">/</span> PRODUCT DETAILS</div>
+
+  <header class="site-header">
+    <div class="nav-shell glass">
+      <nav class="nav-left" aria-label="Primary navigation">
+        <a data-nav="home" href="index.html#home">Home</a>
+        <a data-nav="catalog" href="index.html#catalog">Catalog</a>
+        <a data-nav="contact" href="index.html#contact">Contact</a>
+        <span class="nav-indicator" aria-hidden="true"></span>
+      </nav>
+      <a class="logo" href="index.html#home" aria-label="KIM home">
+        <svg viewBox="0 0 52 60" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path stroke-width="4" d="M28 57c5-18 5-34 1-48M29 11C19 2 9 3 3 7c10 0 18 4 24 11M30 11C34 3 43 1 50 2c-8 4-14 10-18 17M30 12c8-5 16-4 21 1-7-1-13 1-19 5M28 11C20 3 13 1 6 2c8 3 14 8 20 16"/></svg>
+        <span>KIM</span>
+      </a>
+      <div class="nav-actions">
+        <a class="circle-btn product-back" href="index.html#catalog" aria-label="Back to catalog">←</a>
+        <a class="bag-btn" href="index.html#catalog"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8Z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg><span>Bag</span><b id="bagCount">0</b></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="product-main section-shell">
+    <div class="product-breadcrumb reveal"><a href="index.html#catalog">Catalog</a><span>/</span><span id="breadcrumbName">Product</span></div>
+
+    <section class="commerce-layout reveal">
+      <div class="commerce-media">
+        <div class="commerce-image-frame">
+          <img id="productImage" src="" alt="">
+        </div>
+        <div class="thumb-row" id="thumbRow" hidden></div>
+      </div>
+
+      <aside class="commerce-summary">
+        <p class="eyebrow" id="productCategory"></p>
+        <h1 id="productTitle"></h1>
+        <div class="commerce-price"><strong id="productPrice"></strong><span>EUR</span></div>
+        <div class="summary-rule"></div>
+
+        <div class="product-option" id="sizeBlock" hidden>
+          <label for="sizeSelect">Size</label>
+          <select id="sizeSelect"></select>
+        </div>
+
+        <div class="selection-card">
+          <span class="selection-dot"></span>
+          <div><strong>1 piece</strong><small>Standard price</small></div>
+          <b id="selectionPrice"></b>
+        </div>
+
+        <div class="commerce-actions">
+          <button class="secondary glass product-add" id="productAdd">Add to bag</button>
+          <button class="primary product-buy" id="productBuy">Buy now ↗</button>
+        </div>
+
+        <div class="payment-note"><span class="secure-dot"></span> Secure Stripe checkout</div>
+
+        <section class="description-block">
+          <h2>About this piece</h2>
+          <p id="productDescription"></p>
+          <div class="detail-list">
+            <div><span>Collection</span><strong>KIM / Drop 01</strong></div>
+            <div><span>Currency</span><strong>EUR €</strong></div>
+            <div><span>Checkout</span><strong>Stripe</strong></div>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="related reveal">
+      <div class="related-head"><div><p class="eyebrow">MORE FROM KIM</p><h2>You may also like</h2></div><a href="index.html#catalog">View catalog ↗</a></div>
+      <div class="related-grid" id="relatedGrid"></div>
+    </section>
+  </main>
+
+  <footer class="section-shell"><div class="footer-line"></div><div class="footer-content"><div class="footer-logo">KIM</div><span>© 2026 KIMBONGUN.SPACE</span><span>Clothing · Accessories · Fragrances</span></div></footer>
+
+  <script src="products.js?v=20260913-v5"></script>
+  <script src="ui.js?v=20260913-v5"></script>
+  <script src="product.js?v=20260913-v5"></script>
+</body>
+</html>
